@@ -7,12 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springcloud_02eureka_client" />
+        <module name="springcloud_03consul_client" />
         <module name="springcloud_01eureka_server" />
+        <module name="springcloud_04users" />
+        <module name="springcloud_05orders" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springcloud_01eureka_server" target="8" />
       <module name="springcloud_02eureka_client" target="8" />
+      <module name="springcloud_03consul_client" target="8" />
+      <module name="springcloud_04users" target="8" />
+      <module name="springcloud_05orders" target="8" />
       <module name="springcloud_parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>

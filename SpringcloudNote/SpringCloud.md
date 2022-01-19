@@ -77,12 +77,10 @@ rpc：远程调用，（传输层），效率远高于应用层的http
            </dependency> 
         </dependencies>
 
-    </dependencyManagement>
+    </dependencyManagement> 
 ```
 
-# 微服务组件 
-
-## 服务注册中心（eureca server（netflix））
+# 服务注册中心组件（eureca server（netflix））
 
 ![image-20220118232936861](SpringCloud.assets/image-20220118232936861.png)
 
@@ -142,11 +140,131 @@ rpc：远程调用，（传输层），效率远高于应用层的http
 
  
 
+## consul注册中心
+
+![image-20220119080320181](SpringCloud.assets/image-20220119080320181.png)
 
 
 
+![image-20220119080812609](SpringCloud.assets/image-20220119080812609.png)
+
+### consul client 服务客户端开发（微服务）
+
+![image-20220119094204681](SpringCloud.assets/image-20220119094204681.png)
+
+![image-20220119095008780](SpringCloud.assets/image-20220119095008780.png)
+
+# 微服务通信组件
+
+http   使用http协议传递的是JSON数据   工作在应用层
+
+rpc    传送二进制数据    工作在传输层   dubbo：优秀的rpc框架，使用rpc但要求所有都要用java
+
+springcloud 使用http协议传递数据
+
+rpc效率比http高，但rpc存在一些限制
+
+![image-20220119132117478](SpringCloud.assets/image-20220119132117478.png)
+
+![image-20220119134555745](SpringCloud.assets/image-20220119134555745.png)
+
+## 使用RestTemplate实现服务间的调用
+
+RestTemplate  Java提供的http调用方法
+
+```java
+// 调用订单服务的 order  服务地址：http://localhost:8085/order  接受返回值string
+        RestTemplate restTemplate = new RestTemplate();  // java提供的对象，相当于浏览器
+        String orderResult = restTemplate.getForObject("http://localhost:8085/order", String.class);
+        log.info("调用订单服务成功:{}",orderResult)
+```
+
+### RestTemplate存在的问题
+
+# ![image-20220119141624977](SpringCloud.assets/image-20220119141624977.png)
+
+## Ribbon组件（微服务通信组件）
+
+负载均衡组件，通信还是由TestTemplate执行
+
+### Ribbon原理
+
+![image-20220119145224821](SpringCloud.assets/image-20220119145224821.png)
 
 
 
+### 使用Ribbon组件实现负载调用
 
+- 注入 DiscoverClient对象和LoadBalanceClient对象
+
+```java
+    @Autowired   // 服务注册于发现客户端对象
+    private DiscoveryClient discoveryClient;
+
+    @Autowired  // 负载均衡客户端对象
+    private LoadBalancerClient loadBalancerClient;
+```
+
+
+- 使用 Discoverclient 发现服务
+
+```java
+List<ServiceInstance> ordersServerInstances = discoveryClient.getInstances("ORDERS");
+for (ServiceInstance ordersServerInstance : ordersServerInstances) {
+            log.info("服务主机:{},服务端口{},服务地址:{}",
+                    ordersServerInstance.getHost(),
+                    ordersServerInstance.getPort(),
+                    ordersServerInstance.getUri());
+        }
+```
+
+- 使用 LoadBalances  负载均衡调用
+
+```java
+ServiceInstance serviceInstance = loadBalancerClient.choose("ORDERS");  // 默认是轮询策略
+log.info("服务主机:{},服务端口{},服务地址:{}",
+               serviceInstance.getHost(),
+               serviceInstance.getPort(),
+               serviceInstance.getUri());
+```
+
+-  使用RestTemplate进行调用
+
+```java
+RestTemplate restTemplate = new RestTemplate();  // java提供的对象，相当于浏览器
+String orderResult = restTemplate.getForObject(serviceInstance.getUri()+"/order", String.class);
+```
+
+![image-20220119152118658](SpringCloud.assets/image-20220119152118658.png)
+
+- 工厂中创建生成RestTemplate方法
+
+```java
+@Configuration  // 代表这是一个配置类，相当于spring.xml  工厂：创建对象 bean id class=""
+public class BeansConfig {
+
+    // 在工厂中创建restTemplate
+    @Bean
+    @LoadBalanced  //使用@LoacalBalance注解可以使得对象具有Ribbon负载均衡的特性
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+```
+
+- 直接使用RestTemplate进行负载均衡调用
+
+```java
+ // 使用@LoacalBalance注解可以使得对象具有Ribbon负载均衡的特性
+   String orderResult =  restTemplate.getForObject("http://ORDERS/order",String.class);
+
+```
+
+### Ribbon原理详解（面试会问）
+
+![image-20220119152726211](SpringCloud.assets/image-20220119152726211.png)
+
+![image-20220119152840370](SpringCloud.assets/image-20220119152840370.png)
+
+![image-20220119153013892](SpringCloud.assets/image-20220119153013892.png)
 
