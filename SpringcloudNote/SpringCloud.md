@@ -38,6 +38,22 @@ rpc：远程调用，（传输层），效率远高于应用层的http
 
 ![image-20220118223622591](SpringCloud.assets/image-20220118223622591.png)
 
+# 微服务中的重要概念
+
+服务雪崩   服务熔断 服务降级
+
+![image-20220120122705920](SpringCloud.assets/image-20220120122705920.png)
+
+![image-20220120123936318](SpringCloud.assets/image-20220120123936318.png)
+
+
+
+![  ](SpringCloud.assets/image-20220120125700153.png)
+
+![image-20220120125801881](SpringCloud.assets/image-20220120125801881.png)
+
+![image-20220120130000390](SpringCloud.assets/image-20220120130000390.png)
+
 # SpringCloud 命名和版本选择（重要）
 
 ![image-20220118224322924](SpringCloud.assets/image-20220118224322924.png)
@@ -268,3 +284,144 @@ public class BeansConfig {
 
 ![image-20220119153013892](SpringCloud.assets/image-20220119153013892.png)
 
+## 回顾注册中心和Ribbon组件
+
+![image-20220119172531126](SpringCloud.assets/image-20220119172531126.png)
+
+![image-20220119172554858](SpringCloud.assets/image-20220119172554858.png)
+
+# openFeign组件
+
+## 什么是Feign组件？
+
+作用于RestTemplate一致，都是一个http客户端
+
+OpenFeignwei:伪HttpClient客户端对象，可以使服务间的通信变得更简单qqq
+
+![image-20220119180130417](SpringCloud.assets/image-20220119180130417.png)
+
+![image-20220119180249258](SpringCloud.assets/image-20220119180249258.png)
+
+## 如何使用openFeign
+
+待补充
+
+## 服务间通信之参数传递和响应处理 
+
+![image-20220120100426322](SpringCloud.assets/image-20220120100426322.png)
+
+![image-20220120100521782](SpringCloud.assets/image-20220120100521782.png)
+
+![image-20220120112003314](SpringCloud.assets/image-20220120112003314.png)
+
+![image-20220120114745439](SpringCloud.assets/image-20220120114745439.png)
+
+## 响应对象处理
+
+![image-20220120120759034](SpringCloud.assets/image-20220120120759034.png)
+
+## OpenFeign细节
+
+### 配置超时时间
+
+![image-20220120121747068](SpringCloud.assets/image-20220120121747068.png)
+
+### 配置日志展示
+
+![image-20220120121754812](SpringCloud.assets/image-20220120121754812.png)
+
+# Hystrix 组件（防雪崩利器）
+
+## Hystrix的使用
+
+![image-20220120195328308](SpringCloud.assets/image-20220120195328308.png)
+
+![image-20220120195352322](SpringCloud.assets/image-20220120195352322.png)
+
+## Hystrix细节
+
+![image-20220120230711667](SpringCloud.assets/image-20220120230711667.png)
+
+## Hystrix和Openfeign结合使用
+
+![image-20220120235928255](SpringCloud.assets/image-20220120235928255.png)
+
+![image-20220120235932767](SpringCloud.assets/image-20220120235932767.png)
+
+## Hyatrix DashBoard 的使用
+
+![image-20220121002345908](SpringCloud.assets/image-20220121002345908.png)
+
+![image-20220121002523507](SpringCloud.assets/image-20220121002523507.png)![image-20220121002752503](SpringCloud.assets/image-20220121002752503.png)
+
+### Hystrix和 dashboard 的状态
+
+![image-20220121003722343](SpringCloud.assets/image-20220121003722343.png)
+
+
+
+# 回顾组件
+
+![image-20220121003655694](SpringCloud.assets/image-20220121003655694.png)
+
+
+
+# Gatway 网关组件 
+
+## 简介
+
+![image-20220121005507767](SpringCloud.assets/image-20220121005507767.png)
+
+## Gateway 网关的使用
+
+![image-20220121133220392](SpringCloud.assets/image-20220121133220392.png)
+
+## 网关配置细节
+
+ ![image-20220121133530007](SpringCloud.assets/image-20220121133530007.png)
+
+![image-20220121133550878](SpringCloud.assets/image-20220121133550878.png)
+
+![image-20220121133816449](SpringCloud.assets/image-20220121133816449.png) 
+
+## 网关路由解析规则
+
+![image-20220121134449323](SpringCloud.assets/image-20220121134449323.png)
+
+![image-20220121134545397](SpringCloud.assets/image-20220121134545397.png)
+
+
+
+##  网关配置实现负载均衡
+
+![image-20220121135749063](SpringCloud.assets/image-20220121135749063.png)
+
+
+
+## 网关断言（predicate）细节
+
+![image-20220121145141207](SpringCloud.assets/image-20220121145141207.png)
+
+## 网关filter 细节
+
+![image-20220121152841541](SpringCloud.assets/image-20220121152841541.png)
+
+![image-20220121152904125](SpringCloud.assets/image-20220121152904125.png)
+
+![image-20220121153346655](SpringCloud.assets/image-20220121153346655.png)
+
+# Config 组件  统一配置中心
+
+
+
+ 
+
+#  ToDo
+
+- 项目Demo对应知识点
+
+- 配置方法模板
+
+- 总结 requestParam requestBody  requestpath   pathParm 注解的用法
+
+-  Integer和int的关系
