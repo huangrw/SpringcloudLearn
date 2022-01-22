@@ -14,8 +14,10 @@
         <module name="springcloud_05orders" />
         <module name="springcloud_09openfeign_hystrix" />
         <module name="springcloud_02eureka_client" />
+        <module name="springcloud_11configserver" />
         <module name="springcloud_07product" />
         <module name="springcloud_08hystrix" />
+        <module name="springcloud_12configclient" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +32,8 @@
       <module name="springcloud_08hystrix" target="8" />
       <module name="springcloud_09openfeign_hystrix" target="8" />
       <module name="springcloud_10gatway" target="8" />
+      <module name="springcloud_11configserver" target="8" />
+      <module name="springcloud_12configclient" target="8" />
       <module name="springcloud_parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>

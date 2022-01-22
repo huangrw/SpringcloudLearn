@@ -19,6 +19,8 @@
         <module>springcloud_08hystrix</module>
         <module>springcloud_09openfeign_hystrix</module>
         <module>springcloud_10gatway</module>
+        <module>springcloud_11configserver</module>
+        <module>springcloud_12configclient</module>
     </modules>
 
     <!--父项目只用来维护版本号-->

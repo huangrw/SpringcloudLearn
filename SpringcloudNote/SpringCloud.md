@@ -412,11 +412,49 @@ OpenFeignwei:伪HttpClient客户端对象，可以使服务间的通信变得更
 
 # Config 组件  统一配置中心
 
+## confi-server
+
+![37.config组件介绍以及config server开发](SpringCloud.assets/37.config组件介绍以及config server开发.png)
+
+## config-clientv
+
+![image-20220121201201503](SpringCloud.assets/image-20220121201201503.png)
+
+#  
+
+![image-20220121201346604](SpringCloud.assets/image-20220121201346604.png)
+
+## config的刷新
+
+### 手动配置刷新
+
+![image-20220121203601449](SpringCloud.assets/image-20220121203601449.png)
+
+### 自动配置刷新
+
+# Bus 组件        
+
+![image-20220121211713900](SpringCloud.assets/image-20220121211713900.png) 
+
+## configserver连接 mq
+
+![image-20220121224200422](SpringCloud.assets/image-20220121224200422.png)
+
+## configclient 连接 mq
+
+![image-20220121234028433](SpringCloud.assets/image-20220121234028433.png)
+
+# webHooks和内网穿透实现自动刷新
 
 
- 
 
-#  ToDo
+# Sringcloud 总结
+
+![image-20220122105514464](SpringCloud.assets/image-20220122105514464.png)
+
+![image-20220122105535414](SpringCloud.assets/image-20220122105535414.png)
+
+# ToDo
 
 - 项目Demo对应知识点
 
@@ -425,3 +463,8 @@ OpenFeignwei:伪HttpClient客户端对象，可以使服务间的通信变得更
 - 总结 requestParam requestBody  requestpath   pathParm 注解的用法
 
 -  Integer和int的关系
+
+- dokcer 安装 rabbitmq  https://www.cnblogs.com/yufeng218/p/9452621.html
+
+  
+
